@@ -220,9 +220,9 @@ Homework_treasure_vue/
 - 《Guil-me N'o sinruits-水-》 ——魔法少女的魔女审判OST;
 - 《世界は可愛く出来ている》 ——上海アリス幻樂団;
 - 《ラクトガール　～ 少女密室》 ——上海アリス幻樂団; 
-- 海愿 ——塞壬唱片-MSR; Eagle Wei; 
-- 明日方舟「公测」采购中心 ——塞壬唱片-MSR;
-- Operation Wild Scales (Instrumental) ——塞壬唱片-MSR; David Westbom; 
+- 《海愿》 ——塞壬唱片-MSR; Eagle Wei; 
+- 《明日方舟「公测」采购中心》 ——塞壬唱片-MSR;
+- 《Operation Wild Scales (Instrumental)》 ——塞壬唱片-MSR; David Westbom; 
 
 ---
 
