@@ -46,9 +46,7 @@
 ## 🛠️ 技术栈
 - **Vue 3**：渐进式 JavaScript 框架
 - **Vue Router**：官方路由管理器
-- **Vuex**：状态管理库
-- **Axios**：HTTP 请求库
-- **Element Plus**：UI 组件库
+- **Pinia**：状态管理库
 
 ## 📚 参考资料
 - [Vue 3 文档](https://v3.vuejs.org/)
