@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>寻宝游戏 - Vue 3 版本</title>
+  <link rel="stylesheet" href="vue-app/styles/main.css">
+</head>
+<body>
+  <div id="app">
+    <div style="padding: 40px; text-align: center; color: white;">
+      <h2>🔄 加载中...</h2>
+      <p>请稍候</p>
+    </div>
+  </div>
+  
+  <!-- Vue 3 CDN -->
+  <script src="https://unpkg.com/vue@3.3.4/dist/vue.global.prod.js"></script>
+  <!-- Vue Router CDN -->
+  <script src="https://unpkg.com/vue-router@4.2.4/dist/vue-router.global.prod.js"></script>
+  <!-- Vue Demi (Pinia 依赖) -->
+  <script src="https://unpkg.com/vue-demi@0.14.6/lib/index.iife.js"></script>
+  <!-- Pinia CDN -->
+  <script src="https://unpkg.com/pinia@2.1.7/dist/pinia.iife.prod.js"></script>
+  
+  <!-- 应用入口 -->
+  <script>
+    // 检查所有库是否加载成功
+    window.addEventListener('load', function() {
+      if (typeof Vue === 'undefined') {
+        document.getElementById('app').innerHTML = `
+          <div style="padding: 40px; text-align: center; color: white;">
+            <h2>⚠️ Vue 加载失败</h2>
+            <p>请检查网络连接</p>
+            <button onclick="location.reload()" style="margin-top: 20px; padding: 10px 20px; background: #667eea; color: white; border: none; border-radius: 8px; cursor: pointer;">
+              刷新页面
+            </button>
+          </div>
+        `;
+        return;
+      }
+      
+      if (typeof VueRouter === 'undefined') {
+        document.getElementById('app').innerHTML = `
+          <div style="padding: 40px; text-align: center; color: white;">
+            <h2>⚠️ Vue Router 加载失败</h2>
+            <p>请检查网络连接</p>
+            <button onclick="location.reload()" style="margin-top: 20px; padding: 10px 20px; background: #667eea; color: white; border: none; border-radius: 8px; cursor: pointer;">
+              刷新页面
+            </button>
+          </div>
+        `;
+        return;
+      }
+      
+      if (typeof Pinia === 'undefined') {
+        document.getElementById('app').innerHTML = `
+          <div style="padding: 40px; text-align: center; color: white;">
+            <h2>⚠️ Pinia 加载失败</h2>
+            <p>请检查网络连接</p>
+            <button onclick="location.reload()" style="margin-top: 20px; padding: 10px 20px; background: #667eea; color: white; border: none; border-radius: 8px; cursor: pointer;">
+              刷新页面
+            </button>
+          </div>
+        `;
+        return;
+      }
+      
+      // 所有库加载成功，加载应用脚本
+      loadScript('./vue-app/stores/gameStore.js')
+        .then(() => loadScript('./vue-app/App.js'))
+        .then(() => loadScript('./vue-app/views/GameView.js'))
+        .then(() => loadScript('./vue-app/views/UserManagement.js'))
+        .then(() => loadScript('./vue-app/views/Leaderboard.js'))
+        .then(() => {
+          // 等待所有组件加载完成
+          return new Promise(resolve => setTimeout(resolve, 200));
+        })
+        .then(() => {
+          const { createApp } = Vue;
+          const { createRouter, createWebHashHistory } = VueRouter;
+          const { createPinia } = Pinia;
+          
+          // 创建路由
+          const routes = [
+            { path: '/', name: 'Game', component: window.GameView },
+            { path: '/users', name: 'Users', component: window.UserManagement },
+            { path: '/leaderboard', name: 'Leaderboard', component: window.Leaderboard }
+          ];
+          
+          const router = createRouter({
+            history: createWebHashHistory(),
+            routes
+          });
+          
+          // 创建应用
+          const app = createApp(window.App);
+          app.use(createPinia());
+          app.use(router);
+          app.mount('#app');
+        })
+        .catch(err => {
+          console.error('应用加载失败:', err);
+          document.getElementById('app').innerHTML = `
+            <div style="padding: 40px; text-align: center; color: white;">
+              <h2>⚠️ 应用加载失败</h2>
+              <p>${err.message}</p>
+              <button onclick="location.reload()" style="margin-top: 20px; padding: 10px 20px; background: #667eea; color: white; border: none; border-radius: 8px; cursor: pointer;">
+                刷新页面
+              </button>
+            </div>
+          `;
+        });
+    });
+    
+    function loadScript(src) {
+      return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = src;
+        script.onload = resolve;
+        script.onerror = () => reject(new Error(`无法加载 ${src}`));
+        document.head.appendChild(script);
+      });
+    }
+  </script>
+</body>
+</html>

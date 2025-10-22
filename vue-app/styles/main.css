@@ -1,0 +1,603 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', 'Microsoft YaHei', sans-serif;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  min-height: 100vh;
+  color: #eee;
+}
+
+#app {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  backdrop-filter: blur(10px);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s;
+  font-family: inherit;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Header */
+.header {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 20px 30px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.header h1 {
+  color: #ffd700;
+  margin-bottom: 15px;
+  text-align: center;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.nav {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.nav-link {
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  text-decoration: none;
+  color: #eee;
+  transition: all 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.nav-link:hover {
+  background: rgba(255, 215, 0, 0.2);
+  color: #ffd700;
+  border-color: #ffd700;
+}
+
+.nav-link.router-link-active {
+  background: linear-gradient(135deg, #ffd700 0%, #ffaa00 100%);
+  color: #000;
+  font-weight: bold;
+}
+
+.header-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.music-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.music-btn {
+  background: linear-gradient(135deg, #FF9800 0%, #F57C00 100%);
+  color: white;
+  padding: 8px 12px;
+  min-width: 40px;
+}
+
+.volume-slider {
+  width: 80px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  outline: none;
+  cursor: pointer;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #FF9800;
+  cursor: pointer;
+}
+
+.volume-slider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #FF9800;
+  cursor: pointer;
+  border: none;
+}
+
+.volume-text {
+  color: #ffd700;
+  font-size: 12px;
+  min-width: 35px;
+}
+
+/* Game Layout */
+.game-main {
+  min-height: 600px;
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.game-header h2 {
+  color: #ffd700;
+  margin: 0;
+}
+
+.header-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.music-btn {
+  background: linear-gradient(135deg, #FF9800 0%, #F57C00 100%);
+  color: white;
+  padding: 8px 12px;
+  min-width: 40px;
+}
+
+.reset-btn {
+  background: #f44336;
+  color: white;
+  padding: 8px 16px;
+}
+
+.game-layout {
+  display: grid;
+  grid-template-columns: 250px 1fr 300px;
+  gap: 20px;
+}
+
+@media (max-width: 1200px) {
+  .game-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Status Panel */
+.status-panel {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.stat-group {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-label {
+  color: #aaa;
+}
+
+.stat-value {
+  color: #ffd700;
+  font-weight: bold;
+}
+
+/* Inventory Panel */
+.inventory-panel {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.inventory-panel h3 {
+  color: #ffd700;
+  margin-bottom: 15px;
+}
+
+.empty-inventory {
+  color: #888;
+  text-align: center;
+  padding: 20px;
+}
+
+.inventory-items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inventory-item {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 6px;
+  border-left: 3px solid #ffd700;
+}
+
+/* Location Scene */
+.location-scene {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 30px;
+  border-radius: 10px;
+  min-height: 400px;
+}
+
+.location-scene h2 {
+  color: #ffd700;
+  margin-bottom: 15px;
+  font-size: 24px;
+}
+
+.scene-desc {
+  color: #ddd;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  font-size: 16px;
+}
+
+.scene-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.action-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 15px;
+  font-size: 16px;
+  font-weight: bold;
+  border: 2px solid transparent;
+}
+
+.action-btn:hover:not(:disabled) {
+  border-color: #ffd700;
+}
+
+.action-btn:disabled {
+  background: #555;
+  color: #999;
+}
+
+.action-btn.processing {
+  background: #888;
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.action-btn.processing:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* Store Scene */
+.store-scene {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 30px;
+  border-radius: 10px;
+  min-height: 400px;
+}
+
+.store-scene h2 {
+  color: #ffd700;
+  margin-bottom: 15px;
+  font-size: 24px;
+}
+
+.shop-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.shop-item {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s;
+}
+
+.shop-item:hover {
+  border-color: #ffd700;
+  transform: translateY(-2px);
+}
+
+.shop-item.bought {
+  opacity: 0.6;
+  border-color: #555;
+}
+
+.item-info h3 {
+  color: #ffd700;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.item-info p {
+  color: #ddd;
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.price {
+  color: #4CAF50;
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.buy-btn {
+  background: linear-gradient(135deg, #4CAF50 0%, #388E3C 100%);
+  color: white;
+  padding: 10px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.buy-btn:disabled {
+  background: #555;
+}
+
+/* Battle Scene */
+.battle-scene {
+  background: rgba(139, 0, 0, 0.2);
+  padding: 30px;
+  border-radius: 10px;
+  border: 2px solid rgba(255, 0, 0, 0.3);
+}
+
+.battle-scene h2 {
+  color: #ff4444;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 24px;
+}
+
+.battle-status {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 25px;
+  gap: 20px;
+}
+
+.combatant {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.combatant h3 {
+  margin-bottom: 10px;
+  color: #ffd700;
+}
+
+.combatant.player {
+  border: 2px solid #4CAF50;
+}
+
+.combatant.enemy {
+  border: 2px solid #f44336;
+}
+
+.vs {
+  font-size: 32px;
+  font-weight: bold;
+  color: #ffd700;
+}
+
+.health-bar {
+  width: 100%;
+  height: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+
+.health-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4CAF50, #8BC34A);
+  transition: width 0.3s;
+}
+
+.health-fill.enemy {
+  background: linear-gradient(90deg, #f44336, #FF5722);
+}
+
+.battle-log {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 15px;
+  border-radius: 8px;
+  max-height: 150px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  font-family: monospace;
+}
+
+.log-entry {
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ddd;
+}
+
+.battle-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.battle-btn {
+  padding: 15px 30px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.battle-btn.attack {
+  background: linear-gradient(135deg, #f44336 0%, #D32F2F 100%);
+  color: white;
+}
+
+.battle-btn.item {
+  background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+  color: white;
+}
+
+.battle-btn.flee {
+  background: linear-gradient(135deg, #9E9E9E 0%, #757575 100%);
+  color: white;
+}
+
+/* Game Log */
+.game-log {
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 12px;
+  padding: 15px;
+  height: 400px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.game-log h3 {
+  color: #ffd700;
+  margin-bottom: 10px;
+  position: sticky;
+  top: 0;
+  background: rgba(0, 0, 0, 0.9);
+  padding: 5px 0;
+  z-index: 1;
+}
+
+.log-content {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.log-line {
+  color: #ddd;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 3px 0;
+}
+
+/* User Management (保留但调整样式) */
+.user-management {
+  color: #333;
+}
+
+.add-user-form {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+}
+
+.add-user-form h3 {
+  margin-bottom: 15px;
+  color: #ffd700;
+}
+
+.add-user-form input,
+.add-user-form select {
+  padding: 10px 15px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  font-size: 16px;
+  margin-right: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #eee;
+}
+
+.add-user-form input {
+  flex: 1;
+  min-width: 200px;
+}
+
+.user-list h3 {
+  color: #ffd700;
+  margin-bottom: 20px;
+}
+
+/* Leaderboard */
+.leaderboard h2 {
+  color: #ffd700;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* Footer */
+.footer {
+  margin-top: 30px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 215, 0, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 215, 0, 0.7);
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <title>寻宝游戏 - 河边</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header><h1>河边</h1>
+    <div class="controls">
+      <a href="index.html" class="link">返回全景</a>
+      <button id="btn-save">保存进度</button>
+      <button id="btn-reset">重置游戏</button>
+      <a href="inventory.html" class="link">查看存档</a>
+      <button id="btn-music">关闭音乐</button>
+    </div>
+  </header>
+
+  <main class="location-page">
+    <p class="location-desc">河水缓缓流淌，岸边可能藏着小船。</p>
+    <div class="actions">
+      <button class="activity" data-action="findBoat">寻找小船</button>
+      <button class="activity" data-action="crossRiver">尝试渡河（需有船）</button>
+    </div>
+
+    <section id="log" class="log"></section>
+  </main>
+
+  <footer>在此地点可进行与剧情相关的互动（会自动保存状态）。</footer>
+
+  <script src="app.js"></script>
+  <script>
+    initBgm('music/river.mp3');
+  </script>
+  
+</body>
+</html>

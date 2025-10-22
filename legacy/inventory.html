@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <title>存档 / 存储</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>存档</h1>
+    <div class="controls">
+      <a href="index.html" class="link">返回全景</a>
+      <button id="btn-clear">清除存档</button>
+    </div>
+  </header>
+  <main>
+    <pre id="storage-view" class="storage-view"></pre>
+  </main>
+  <script>
+    function loadStorage() {
+      const data = localStorage.getItem('treasure_game_state');
+      const view = document.getElementById('storage-view');
+      view.textContent = data ? JSON.stringify(JSON.parse(data), null, 2) : '没有存档';
+    }
+    document.getElementById('btn-clear').addEventListener('click', () => {
+      if (confirm('确定要清除本地存档吗？')) {
+        localStorage.removeItem('treasure_game_state');
+        loadStorage();
+        alert('已清除');
+      }
+    });
+    loadStorage();
+  </script>
+
+</body>
+</html>

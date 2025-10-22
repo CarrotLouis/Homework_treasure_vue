@@ -1,0 +1,26 @@
+* { box-sizing: border-box; }
+body { font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial; margin: 0; background: #111; color: #eee; }
+header { padding: 12px 18px; display:flex; align-items:center; justify-content:space-between; background: linear-gradient(90deg,#222,#111); border-bottom:1px solid #333; }
+header h1 { margin: 0; font-size: 20px; }
+.controls { display:flex; gap:8px; align-items:center; }
+.controls .link { color:#9cf; text-decoration:none; padding:6px 10px; border-radius:6px; background:transparent; border:1px solid transparent; }
+.controls button { padding:6px 10px; border-radius:6px; background:#2a2a2a; color:#fff; border:1px solid #444; cursor:pointer; }
+main { padding: 18px; max-width: 1000px; margin: 0 auto; }
+.panorama { width: 100%; height: 420px; border-radius: 8px; background-image: linear-gradient(120deg,#1d2b34,#1b3a2f); position: relative; overflow: hidden; border: 1px solid #333; }
+.hotspot { position: absolute; transform: translate(-50%,-50%); padding: 6px 10px; border-radius: 20px; background: rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.06); color: #fff; cursor:pointer; }
+.hotspot:hover { background: rgba(255,255,255,0.12); transform: translate(-50%,-50%) scale(1.06); }
+.log { margin-top: 14px; padding: 12px; background:#0e1112; border-radius:6px; min-height:80px; border:1px solid #222; white-space: pre-wrap; font-family: monospace; }
+.location-page { max-width:800px; margin: 0 auto; }
+.location-desc { font-size:18px; margin-bottom:12px; white-space: pre-wrap; }
+.actions { display:flex; gap:8px; margin-bottom:12px; }
+.activity { padding:8px 12px; background:#24303a; color:#fff; border-radius:6px; border:1px solid #1b252b; cursor:pointer; }
+.storage-view { background:#0b0b0b; color:#9cf; padding:12px; border-radius:6px; white-space:pre-wrap; }
+footer { padding:12px 18px; text-align:center; color:#888; font-size:13px; border-top:1px solid #222; margin-top:20px; }
+#btn-music {
+    background: linear-gradient(90deg, #2a3, #1a2);
+    color: white;
+  }
+  #btn-music.paused {
+    background: #444;
+  }
+  
