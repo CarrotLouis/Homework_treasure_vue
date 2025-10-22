@@ -208,15 +208,21 @@ Homework_treasure_vue/
 - ✅ 数据持久化
 - ✅ 响应式界面
 
-## 📜 许可证
-
-本项目采用 MIT 许可证，详情请见 [LICENSE](LICENSE) 文件。
-音乐使用了
-
 ## 🙏 致谢
 
 - Vue.js 团队：提供优秀的前端框架
 - 感谢朱涛老师的授课
+
+## 版权相关
+本作业未经授权使用了一些音乐，只用于展示作业给老师看，望版权方理解
+
+使用的音乐如下：
+- 《Guil-me N'o sinruits-水-》 ——魔法少女的魔女审判OST;
+- 《世界は可愛く出来ている》 ——上海アリス幻樂団;
+- 《ラクトガール　～ 少女密室》 ——上海アリス幻樂団; 
+- 海愿 ——塞壬唱片-MSR; Eagle Wei; 
+- 明日方舟「公测」采购中心 ——塞壬唱片-MSR;
+- Operation Wild Scales (Instrumental) ——塞壬唱片-MSR; David Westbom; 
 
 ---
 
